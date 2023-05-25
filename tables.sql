@@ -74,4 +74,30 @@ ALTER TABLE managment.user_courses ADD CONSTRAINT assistants_courses_un UNIQUE (
 ALTER TABLE managment.lectures ALTER COLUMN "date" TYPE date USING "date"::date;
 ALTER TABLE managment.attendance ADD CONSTRAINT attendance_un UNIQUE (lecture_id,student_number);
 ALTER TABLE managment.users ALTER COLUMN is_admin SET DEFAULT 0;
+ALTER TABLE managment.user_courses DROP CONSTRAINT user_courses_user_id_fkey;
+ALTER TABLE managment.user_courses ADD CONSTRAINT user_courses_fk FOREIGN KEY (user_id) REFERENCES managment.users(user_id);
+ALTER TABLE managment.user_courses DROP CONSTRAINT user_courses_code_fkey;
+ALTER TABLE managment.user_courses ADD CONSTRAINT user_courses_fk2 FOREIGN KEY (code) REFERENCES managment.courses(course_code);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

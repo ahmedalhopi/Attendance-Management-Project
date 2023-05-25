@@ -42,7 +42,7 @@ public class AdminHomeController implements Initializable {
 
     public void goToConnect() throws IOException {
         Stage primaryStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Assistants_Courses.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UsersAndCourses.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
