@@ -46,7 +46,7 @@
             <Font size="28.0" />
          </font>
       </Button>
-      <Pane fx:id="paneContainerDelete" layoutX="223.0" layoutY="196.0" prefHeight="262.0" prefWidth="711.0" style="-fx-background-color: #20052b;">
+      <Pane fx:id="paneContainerDelete" layoutX="223.0" layoutY="196.0" prefHeight="262.0" prefWidth="711.0" style="-fx-background-color: #20052b;" visible="false">
          <children>
             <Label layoutX="48.0" layoutY="36.0" prefHeight="39.0" prefWidth="193.0" text="Assistant Number" textFill="#188669">
                <font>

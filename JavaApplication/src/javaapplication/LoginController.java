@@ -39,8 +39,8 @@ public class LoginController implements Initializable {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        id_number_txt.setText("2020");
-        password_txt.setText("123");
+        id_number_txt.setText("2021");
+        password_txt.setText("test2");
     }
 
     public void loginButtonClicked(ActionEvent actionEvent) throws ClassNotFoundException, IOException {
@@ -74,7 +74,6 @@ public class LoginController implements Initializable {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Attendance Management");
             primaryStage.setResizable(false);
             primaryStage.iconifiedProperty();
             currentStage.close();
@@ -89,7 +88,6 @@ public class LoginController implements Initializable {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Attendance Management");
             primaryStage.setResizable(false);
             primaryStage.iconifiedProperty();
             currentStage.close();

@@ -31,7 +31,7 @@
             <Font size="28.0" />
          </font>
       </Button>
-      <TableView fx:id="tableview" layoutX="226.0" layoutY="194.0" prefHeight="685.0" prefWidth="663.0" style="-fx-background-color: #20052b;">
+      <TableView fx:id="tableview" layoutX="226.0" layoutY="194.0" prefHeight="685.0" prefWidth="663.0" style="-fx-background-color: #20052b;" visible="false">
         <columns>
           <TableColumn fx:id="name" prefWidth="333.0" text="User" />
             <TableColumn fx:id="course" minWidth="0.0" prefWidth="327.0" text="Course" />

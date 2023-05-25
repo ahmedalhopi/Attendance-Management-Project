@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
-import java.util.regex.Pattern;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,16 +19,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javax.swing.JOptionPane;
 
-/**
- * FXML Controller class
- *
- * @author IT
- */
 public class StudentsController implements Initializable {
 
     @FXML
@@ -42,79 +34,59 @@ public class StudentsController implements Initializable {
     @FXML
     private TableColumn<ObservableList<String>, String> gender;
     @FXML
+    private TableColumn<ObservableList<String>, String> mobile;
+    @FXML
     private TableColumn<ObservableList<String>, String> living;
     @FXML
     private TableColumn<ObservableList<String>, String> department;
     @FXML
     private TableColumn<ObservableList<String>, String> major;
-    /////////////////////////////////////////////////////////
     @FXML
     private Pane paneContainer;
     @FXML
-    private TextField number_txt;
+    private TextField number0;
     @FXML
-    private TextField name_txt;
+    private TextField name0;
     @FXML
-    private TextField department_txt;
+    private TextField department0;
     @FXML
-    private TextField mobile_txt;
+    private TextField mobile0;
     @FXML
-    private TextField living_txt;
+    private TextField living0;
     @FXML
-    private TextField major_txt;
+    private TextField major0;
     @FXML
-    private RadioButton male_radio;
+    private RadioButton male0;
     @FXML
-    private RadioButton female_radio;
+    private RadioButton female0;
     @FXML
-    private ToggleGroup genderInsert;
-    /////////////////////////////////////////////////////////////////
+    private ToggleGroup gender0;
     @FXML
     private Pane paneContainerUpdate;
     @FXML
-    private TextField number_txt_update;
+    private TextField number1;
     @FXML
-    private TextField name_txt_update;
+    private TextField name1;
     @FXML
-    private TextField department_txt_update;
+    private TextField department1;
     @FXML
-    private TextField mobile_txt_update;
+    private TextField mobile1;
     @FXML
-    private TextField living_txt_update;
+    private TextField living1;
     @FXML
-    private TextField major_txt_update;
+    private TextField major1;
     @FXML
-    private RadioButton male_radio_update;
+    private RadioButton male1;
     @FXML
-    private RadioButton female_radio_update;
+    private RadioButton female1;
     @FXML
-    private Button updateBtn;
+    private Button update1;
     @FXML
-    private Button add_mobilebtn;
-    @FXML
-    private ToggleGroup genderUpdate;
-    @FXML
-    private TableView<ObservableList<String>> tableview_mobile;
-    @FXML
-    private TableColumn<ObservableList<String>, String> mobile_col;
-    ////////////////////////////////////////////////////////////////
+    private ToggleGroup gender1;
     @FXML
     private Pane paneContainerDelete;
     @FXML
-    private TextField number_txt_delete;
-    @FXML
-    private TextField name_txt_delete;
-    @FXML
-    private TextField gender_txt_delete;
-    @FXML
-    private TextField living_txt_delete;
-    @FXML
-    private TextField department_txt_delete;
-    @FXML
-    private TextField major_txt_delete;
-    @FXML
-    private Button deleteBtn;
-    ///////////////////////////////////////////////////////////////
+    private TextField number2;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -122,48 +94,29 @@ public class StudentsController implements Initializable {
         paneContainer.setVisible(false);
         paneContainerUpdate.setVisible(false);
         paneContainerDelete.setVisible(false);
-        deleteBtn.setDisable(true);
-        updateBtn.setDisable(true);
-        add_mobilebtn.setDisable(true);
-        mobile_txt.setTextFormatter(createNumericTextFormatter());
-        number_txt_delete.setTextFormatter(createNumericTextFormatter());
-        number_txt.setTextFormatter(createNumericTextFormatter());
-        number_txt_update.setTextFormatter(createNumericTextFormatter());
-        mobile_txt_update.setTextFormatter(createNumericTextFormatter());
+        update1.setDisable(true);
 
     }
 
-    private TextFormatter<String> createNumericTextFormatter() {
-        Pattern pattern = Pattern.compile("\\d*"); // Only allow digits (0-9)
-        UnaryOperator<TextFormatter.Change> filter = change -> {
-            String newText = change.getControlNewText();
-            if (pattern.matcher(newText).matches()) {
-                return change;
-            }
-            return null; // Reject the change
-        };
-        return new TextFormatter<>(filter);
-    }
-
-    public void get_students() throws ClassNotFoundException {
+    public void get_all_students() throws ClassNotFoundException {
         tableView.getItems().clear();
         tableView.setVisible(true);
         paneContainer.setVisible(false);
         paneContainerUpdate.setVisible(false);
         paneContainerDelete.setVisible(false);
-        deleteBtn.setDisable(true);
-        updateBtn.setDisable(true);
+        update1.setDisable(true);
         number.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
         name.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
-        gender.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
-        living.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
-        department.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
-        major.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
+        mobile.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
+        gender.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
+        living.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
+        department.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
+        major.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(6)));
         PreparedStatement pst;
-        ResultSet rs = null;
+        ResultSet rs;
         Connection conn;
 
-        String sel = "select * from mang.students";
+        String sel = "select * from managment.students";
 
         try {
             conn = DatabaseConnect.connDB();
@@ -173,10 +126,11 @@ public class StudentsController implements Initializable {
                 ObservableList<String> row = FXCollections.observableArrayList();
                 row.add(rs.getString("student_number"));
                 row.add(rs.getString("full_name"));
+                row.add(rs.getString("mobile"));
                 row.add(rs.getString("gender"));
                 row.add(rs.getString("living"));
                 row.add(rs.getString("department"));
-                row.add(rs.getString("majoring"));
+                row.add(rs.getString("major"));
                 tableView.getItems().add(row);
             }
         } catch (SQLException ex) {
@@ -184,250 +138,150 @@ public class StudentsController implements Initializable {
         }
     }
 
-    public void add_assistants() {
+    public void insert_student() {
         tableView.setVisible(false);
         paneContainer.setVisible(true);
         paneContainerUpdate.setVisible(false);
         paneContainerDelete.setVisible(false);
-        deleteBtn.setDisable(true);
-        updateBtn.setDisable(true);
+        update1.setDisable(true);
 
     }
 
-    public void saveDate() throws ClassNotFoundException {
-        PreparedStatement pst;  
-        PreparedStatement pst_mobile;
+    public void saveStudent() throws ClassNotFoundException {
+        String sel = "INSERT INTO managment.students (student_number, full_name,mobile ,gender, living, department, major) VALUES(?, ?, ?, ?, ?, ?, ?);";
+        PreparedStatement pst;
         Connection conn;
-        String sel = "INSERT INTO mang.students (student_number, full_name, gender, living, department, majoring) VALUES(?, ?, ?, ?, ?, ?);";    
-        String sel_mobile = "INSERT INTO mang.students_mobiles (student_number, mobile) VALUES(?, ?);";
-
         try {
-            String gender_option = "";
+            String gender_select = "";
             conn = DatabaseConnect.connDB();
             pst = conn.prepareStatement(sel);
-            pst_mobile = conn.prepareStatement(sel_mobile);
-            pst.setString(1, number_txt.getText());
-            pst.setString(2, name_txt.getText());
-            RadioButton selectedRadioButton = (RadioButton) genderInsert.getSelectedToggle();
-        if (selectedRadioButton != null) {
-            if (selectedRadioButton == male_radio) {
-                gender_option = "Male";
-                System.out.println("Selected: Male");
-            } else if (selectedRadioButton == female_radio) {
-                gender_option = "Female";
-                System.out.println("Selected: Female");
+            pst.setString(1, number0.getText());
+            pst.setString(2, name0.getText());
+            RadioButton genderVariable = (RadioButton) gender0.getSelectedToggle();
+            if (genderVariable == male0) {
+                gender_select = "male";
+            } else if (genderVariable == female0) {
+                gender_select = "female";
             }
-        }
-            pst.setString(3, gender_option);
-            pst.setString(4, living_txt.getText());
-            pst.setString(5, department_txt.getText());
-            pst.setString(6, major_txt.getText());
-            pst_mobile.setString(1, number_txt.getText());
-            pst_mobile.setString(2, mobile_txt.getText());
+            pst.setString(3, mobile0.getText());
+            pst.setString(4, gender_select);
+            pst.setString(5, living0.getText());
+            pst.setString(6, department0.getText());
+            pst.setString(7, major0.getText());
             pst.executeUpdate();
-            pst_mobile.executeUpdate();
-            JOptionPane.showMessageDialog(null, "A new student has been added");
-            number_txt.setText("");
-            name_txt.setText("");
-            male_radio.setSelected(true);
-            living_txt.setText("");
-            department_txt.setText("");
-            mobile_txt.setText("");
-            major_txt.setText("");
-
+            JOptionPane.showMessageDialog(null, "Student Inserted");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex);
         }
     }
 
-    public void update_assistants() {
+    public void update_student() {
         tableView.setVisible(false);
         paneContainer.setVisible(false);
         paneContainerUpdate.setVisible(true);
         paneContainerDelete.setVisible(false);
-        deleteBtn.setDisable(true);
-        updateBtn.setDisable(true);
-        add_mobilebtn.setDisable(true);
+        update1.setDisable(true);
 
     }
 
-    public void getDataForAssistants_delete () throws ClassNotFoundException {
+    public void getDataForStudent() throws ClassNotFoundException {
         Connection conn = DatabaseConnect.connDB();
         System.out.println(conn);
         PreparedStatement pst;
         ResultSet rs;
-        String log = "select * from mang.students where student_number = ? ";
+        String log = "select * from managment.students where student_number = ? ";
         try {
             pst = conn.prepareStatement(log);
-            pst.setString(1, number_txt_delete.getText());
+            pst.setString(1, number1.getText());
             rs = pst.executeQuery();
             if (rs.next()) {
-                name_txt_delete.setText(rs.getString("full_name"));
-                living_txt_delete.setText(rs.getString("living"));
-                department_txt_delete.setText(rs.getString("department"));
-                major_txt_delete.setText(rs.getString("majoring"));
-                gender_txt_delete.setText(rs.getString("gender"));
-
-                deleteBtn.setDisable(false);
-                updateBtn.setDisable(true);
-                add_mobilebtn.setDisable(true);
+                name1.setText(rs.getString("full_name"));
+                if ("male".equals(rs.getString("gender"))) {
+                    male1.setSelected(true);
+                } else {
+                    female1.setSelected(true);
+                }
+                living1.setText(rs.getString("mobile"));
+                living1.setText(rs.getString("living"));
+                department1.setText(rs.getString("department"));
+                major1.setText(rs.getString("major"));
+                mobile1.setText(rs.getString("mobile"));
+                update1.setDisable(false);
                 System.out.println(rs);
             } else {
-                JOptionPane.showMessageDialog(null, "No student has the input code");
+                JOptionPane.showMessageDialog(null, "Student not found");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
 
-    public void getDataForStudent_update() throws ClassNotFoundException {
-        tableview_mobile.getItems().clear();
-        mobile_col.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
-        Connection conn = DatabaseConnect.connDB();
-        System.out.println(conn);
-        PreparedStatement pst;
-        PreparedStatement pst_mobile;
-        ResultSet rs;
-        ResultSet rs_mobile;
-        String log = "select * from mang.students where student_number = ? ";
-        String log_mobile = "select mobile from mang.students_mobiles where student_number = ? ";
-        try {
-            pst = conn.prepareStatement(log);
-            pst_mobile = conn.prepareStatement(log_mobile);
-            pst.setString(1, number_txt_update.getText());
-            pst_mobile.setString(1, number_txt_update.getText());
-            rs = pst.executeQuery();
-            rs_mobile = pst_mobile.executeQuery();
-            if (rs.next()) {
-                name_txt_update.setText(rs.getString("full_name"));
-                if("male".equals(rs.getString("gender")))
-                    male_radio_update.setSelected(true);
-                else
-                    female_radio_update.setSelected(true);
-                living_txt_update.setText(rs.getString("living"));
-                department_txt_update.setText(rs.getString("department"));
-                major_txt_update.setText(rs.getString("majoring"));
-                System.out.println(rs_mobile.getCursorName());
-                while (rs_mobile.next()) {
-                ObservableList<String> row = FXCollections.observableArrayList();
-                row.add(rs_mobile.getString("mobile"));
-                tableview_mobile.getItems().add(row);
-            }
-
-                deleteBtn.setDisable(true);
-                updateBtn.setDisable(false);
-                add_mobilebtn.setDisable(false);
-                System.out.println(rs);
-            } else {
-                JOptionPane.showMessageDialog(null, "No student has the input code");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-    
-    public void add_mobile() throws ClassNotFoundException{
-        PreparedStatement pst;  
-        Connection conn;
-        String sel = "";    
-        try {
-            sel = "INSERT INTO mang.students_mobiles (student_number, mobile) VALUES(?, ?);";
-            conn = DatabaseConnect.connDB();
-            pst = conn.prepareStatement(sel);
-            pst.setString(1, number_txt_update.getText());
-            pst.setString(2, mobile_txt_update.getText());
-            pst.executeUpdate();
-            mobile_txt_update.setText("");
-            getDataForStudent_update();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "The mobile has been added");
-            System.out.println(ex);
-        }
-    }
-
-    public void updateDate() throws ClassNotFoundException {
+    public void updateStudent() throws ClassNotFoundException {
         PreparedStatement pst;
         Connection conn;
-        String sel = "UPDATE mang.students SET full_name=?, gender=?, living=?, department=?, majoring=? WHERE student_number=?;";
+        String sel = "UPDATE managment.students SET full_name=?, gender=?, mobile=? ,living=?, department=?, major=? WHERE student_number=?;";
         try {
-            String gender_option = "";
+            String gender_select = "";
             conn = DatabaseConnect.connDB();
             pst = conn.prepareStatement(sel);
-            pst.setString(1, name_txt_update.getText());
-            RadioButton selectedRadioButton = (RadioButton) genderUpdate.getSelectedToggle();
-        if (selectedRadioButton != null) {
-            if (selectedRadioButton == male_radio_update) {
-                gender_option = "Male";
-                System.out.println("Selected: Male");
-            } else if (selectedRadioButton == female_radio_update) {
-                gender_option = "Female";
-                System.out.println("Selected: Female");
+            pst.setString(1, name1.getText());
+            RadioButton genderVariable = (RadioButton) gender1.getSelectedToggle();
+            if (genderVariable == male1) {
+                gender_select = "male";
+            } else if (genderVariable == female1) {
+                gender_select = "female";
             }
-        }
-            pst.setString(2, gender_option);
-            pst.setString(3, living_txt_update.getText());
-            pst.setString(4, department_txt_update.getText());
-            pst.setString(5, major_txt_update.getText());
-            pst.setString(6, number_txt_update.getText());
+            pst.setString(2, gender_select);
+            pst.setString(3, mobile1.getText());
+            pst.setString(4, living1.getText());
+            pst.setString(5, department1.getText());
+            pst.setString(6, major1.getText());
+            pst.setString(7, number1.getText());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "The data has been updated");
+            JOptionPane.showMessageDialog(null, "Student Updated");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex);
         }
     }
 
-    public void delete_assistants() {
+    public void delete_student() {
         tableView.setVisible(false);
         paneContainer.setVisible(false);
         paneContainerUpdate.setVisible(false);
         paneContainerDelete.setVisible(true);
-        deleteBtn.setDisable(true);
-        updateBtn.setDisable(true);
+        update1.setDisable(true);
     }
 
-    public void deleteData() throws ClassNotFoundException {
+    public void deleteStudent() throws ClassNotFoundException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText(null);
-        alert.setContentText("Are you sure you want to delete the course?");
+        alert.setContentText("Do you want to delete student?");
 
         ButtonType confirmButton = new ButtonType("Yes");
         ButtonType cancelButton = new ButtonType("No");
 
         alert.getButtonTypes().setAll(confirmButton, cancelButton);
 
-// Wait for the user's response
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == confirmButton) {
             PreparedStatement pst;
-            PreparedStatement pst_mobile;
             Connection conn;
-            String sel = "DELETE FROM mang.students WHERE student_number=?;";
-            String sel_mobile = "DELETE FROM mang.students_mobiles WHERE student_number=?;";
+            String sel = "DELETE FROM managment.students WHERE student_number=?;";
             try {
                 conn = DatabaseConnect.connDB();
-                pst_mobile = conn.prepareStatement(sel_mobile);
-                pst_mobile.setString(1, number_txt_delete.getText());
-                pst_mobile.executeUpdate();
                 pst = conn.prepareStatement(sel);
-                pst.setString(1, number_txt_delete.getText());
+                pst.setString(1, number2.getText());
                 pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "The Student has been deleted");
-                number_txt_delete.setText("");
-                name_txt_delete.setText("");
-                gender_txt_delete.setText("");
-                living_txt_delete.setText("");
-                department_txt_delete.setText("");
-                major_txt_delete.setText("");
+                JOptionPane.showMessageDialog(null, "Student Deleted");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
                 System.err.println(ex);
             }
         }
     }
-     
-    
+
 }
