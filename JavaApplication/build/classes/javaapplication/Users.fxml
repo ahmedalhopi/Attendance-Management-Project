@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="818.0" prefWidth="1279.0" style="-fx-background-color: #20052b;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication.UsersController">
+   <children>
+      <Label layoutX="493.0" layoutY="14.0" prefHeight="66.0" prefWidth="294.0" text="Assistants" textFill="#188669">
+         <font>
+            <Font name="Broadway" size="52.0" />
+         </font>
+      </Label>
+      <Button layoutX="14.0" layoutY="80.0" mnemonicParsing="false" onAction="#get_users" prefHeight="57.0" prefWidth="246.0" style="-fx-background-color: #71029e;" text="All Users" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Button>
+      <Button layoutX="332.0" layoutY="80.0" mnemonicParsing="false" onAction="#add_user" prefHeight="57.0" prefWidth="246.0" style="-fx-background-color: #71029e;" text="Add Users" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableView" layoutX="89.0" layoutY="157.0" prefHeight="647.0" prefWidth="1103.0" style="-fx-background-color: #20052b;" visible="false">
+        <columns>
+          <TableColumn fx:id="number" prefWidth="119.0" text="Id" />
+          <TableColumn fx:id="name" prefWidth="155.0" text="Name" />
+            <TableColumn fx:id="mobile" minWidth="6.0" prefWidth="177.0" text="Mobile" />
+            <TableColumn fx:id="living" prefWidth="334.0" text="Living Place" />
+            <TableColumn fx:id="department" prefWidth="149.0" text="Department" />
+            <TableColumn fx:id="password" minWidth="0.0" prefWidth="166.0" text="Password" />
+        </columns>
+      </TableView>
+      <Button layoutX="672.0" layoutY="80.0" mnemonicParsing="false" onAction="#update_user" prefHeight="60.0" prefWidth="261.0" style="-fx-background-color: #71029e;" text="Update Users" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Button>
+      <Button layoutX="1001.0" layoutY="80.0" mnemonicParsing="false" onAction="#delete_user" prefHeight="60.0" prefWidth="261.0" style="-fx-background-color: #71029e;" text="Delete Users" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Button>
+      <Pane fx:id="paneContainerDelete" layoutX="223.0" layoutY="196.0" prefHeight="262.0" prefWidth="711.0" style="-fx-background-color: #20052b;">
+         <children>
+            <Label layoutX="48.0" layoutY="36.0" prefHeight="39.0" prefWidth="193.0" text="Assistant Number" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="number2" layoutX="263.0" layoutY="32.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Button fx:id="deleteBtn" layoutX="229.0" layoutY="131.0" mnemonicParsing="false" onAction="#deleteData" prefHeight="60.0" prefWidth="253.0" style="-fx-background-color: #e20505;" text="Delete User" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="paneContainer" layoutX="311.0" layoutY="170.0" prefHeight="575.0" prefWidth="652.0" style="-fx-background-color: #20052b;" visible="false">
+         <children>
+            <Label layoutX="29.0" layoutY="25.0" prefHeight="39.0" prefWidth="184.0" text="User Id" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="number0" layoutX="245.0" layoutY="22.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="27.0" layoutY="95.0" prefHeight="39.0" prefWidth="142.0" text="Full Name" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name0" layoutX="245.0" layoutY="92.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="27.0" layoutY="167.0" prefHeight="39.0" prefWidth="142.0" text="Mobile" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="mobile0" layoutX="245.0" layoutY="164.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="27.0" layoutY="231.0" prefHeight="39.0" prefWidth="142.0" text="Department" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="department0" layoutX="245.0" layoutY="228.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="27.0" layoutY="304.0" prefHeight="39.0" prefWidth="142.0" text="Living Place" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="living0" layoutX="245.0" layoutY="301.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="29.0" layoutY="376.0" prefHeight="39.0" prefWidth="142.0" text="Password" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="password0" layoutX="245.0" layoutY="373.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Button layoutX="200.0" layoutY="458.0" mnemonicParsing="false" onAction="#saveDate" prefHeight="60.0" prefWidth="253.0" style="-fx-background-color: #5498d5;" text="Save" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="paneContainerUpdate" layoutX="172.0" layoutY="175.0" prefHeight="575.0" prefWidth="931.0" style="-fx-background-color: #20052b;" visible="false">
+         <children>
+            <Label layoutX="29.0" layoutY="25.0" prefHeight="39.0" prefWidth="184.0" text="User Id" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="number1" layoutX="231.0" layoutY="23.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="33.0" layoutY="100.0" prefHeight="39.0" prefWidth="142.0" text="Full Name" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name1" layoutX="231.0" layoutY="97.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="33.0" layoutY="168.0" prefHeight="39.0" prefWidth="142.0" text="Mobile" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="mobile1" layoutX="231.0" layoutY="165.0" prefHeight="45.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="33.0" layoutY="230.0" prefHeight="39.0" prefWidth="142.0" text="Department" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="department1" layoutX="231.0" layoutY="227.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="33.0" layoutY="378.0" prefHeight="39.0" prefWidth="142.0" text="Living Place" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="living1" layoutX="231.0" layoutY="375.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Label layoutX="33.0" layoutY="302.0" prefHeight="39.0" prefWidth="142.0" text="Password" textFill="#188669">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="password1" layoutX="231.0" layoutY="299.0" prefHeight="39.0" prefWidth="370.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <Button fx:id="update1" disable="true" layoutX="296.0" layoutY="457.0" mnemonicParsing="false" onAction="#updateDate" prefHeight="60.0" prefWidth="253.0" style="-fx-background-color: #71029e;" text="Update" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Button>
+            <Button layoutX="645.0" layoutY="20.0" mnemonicParsing="false" onAction="#getDataForUser" prefHeight="45.0" prefWidth="253.0" style="-fx-background-color: #71029e;" text="Get Data" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

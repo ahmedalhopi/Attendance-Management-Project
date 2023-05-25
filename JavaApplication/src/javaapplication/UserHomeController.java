@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  *
  * @author IT
  */
-public class AssistantsHomeController implements Initializable {
+public class UserHomeController implements Initializable {
 
     /**
      * Initializes the controller class.

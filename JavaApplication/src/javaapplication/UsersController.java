@@ -21,57 +21,62 @@ import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import javafx.scene.layout.Pane;
 
-public class CoursesController implements Initializable {
+public class UsersController implements Initializable {
 
     @FXML
     private TableView<ObservableList<String>> tableView;
     @FXML
-    private TableColumn<ObservableList<String>, String> code;
+    private TableColumn<ObservableList<String>, String> number;
     @FXML
-    private TableColumn<ObservableList<String>, String> course;
+    private TableColumn<ObservableList<String>, String> name;
     @FXML
-    private TableColumn<ObservableList<String>, String> subject;
+    private TableColumn<ObservableList<String>, String> mobile;
     @FXML
-    private TableColumn<ObservableList<String>, String> book;
+    private TableColumn<ObservableList<String>, String> living;
     @FXML
-    private TableColumn<ObservableList<String>, String> teacher;
+    private TableColumn<ObservableList<String>, String> department;
     @FXML
-    private TableColumn<ObservableList<String>, String> place;
+    private TableColumn<ObservableList<String>, String> password;
+    /////////////////////////////////////////////////////////
     @FXML
     private Pane paneContainer;
     @FXML
-    private TextField code0;
+    private TextField number0;
     @FXML
     private TextField name0;
     @FXML
-    private TextField subject0;
+    private TextField department0;
     @FXML
-    private TextField book0;
+    private TextField mobile0;
     @FXML
-    private TextField teacher0;
+    private TextField living0;
     @FXML
-    private TextField place0;
+    private TextField password0;
+
+    /////////////////////////////////////////////////////////////////
     @FXML
     private Pane paneContainerUpdate;
     @FXML
-    private TextField code1;
+    private TextField number1;
     @FXML
     private TextField name1;
     @FXML
-    private TextField subject1;
+    private TextField department1;
     @FXML
-    private TextField book1;
+    private TextField mobile1;
     @FXML
-    private TextField teacher1;
+    private TextField living1;
     @FXML
-    private TextField place1;
+    private TextField password1;
     @FXML
     private Button update1;
+    ////////////////////////////////////////////////////////////////
     @FXML
     private Pane paneContainerDelete;
     @FXML
-    private TextField code2;
+    private TextField number2;
 
+    ///////////////////////////////////////////////////////////////
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,24 +87,25 @@ public class CoursesController implements Initializable {
         update1.setDisable(true);
     }
 
-    public void get_courses() throws ClassNotFoundException {
+
+    public void get_users() throws ClassNotFoundException {
         tableView.getItems().clear();
         tableView.setVisible(true);
         paneContainer.setVisible(false);
         paneContainerUpdate.setVisible(false);
         paneContainerDelete.setVisible(false);
         update1.setDisable(true);
-        code.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
-        course.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
-        subject.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
-        book.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
-        teacher.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
-        place.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
+        number.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
+        name.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
+        mobile.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
+        living.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
+        department.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
+        password.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
         PreparedStatement pst;
-        ResultSet rs = null;
+        ResultSet rs ;
         Connection conn;
 
-        String sel = "select * from managment.courses";
+        String sel = "select * from managment.users";
 
         try {
 
@@ -108,12 +114,12 @@ public class CoursesController implements Initializable {
             rs = pst.executeQuery();
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
-                row.add(rs.getString("course_code"));
-                row.add(rs.getString("course_name"));
-                row.add(rs.getString("subject"));
-                row.add(rs.getString("book"));
-                row.add(rs.getString("teacher"));
-                row.add(rs.getString("place"));
+                row.add(rs.getString("user_id"));
+                row.add(rs.getString("full_name"));
+                row.add(rs.getString("mobile"));
+                row.add(rs.getString("living"));
+                row.add(rs.getString("department"));
+                row.add(rs.getString("password"));
                 tableView.getItems().add(row);
             }
         } catch (SQLException ex) {
@@ -121,7 +127,7 @@ public class CoursesController implements Initializable {
         }
     }
 
-    public void add_course() {
+    public void add_user() {
         tableView.setVisible(false);
         paneContainer.setVisible(true);
         paneContainerUpdate.setVisible(false);
@@ -133,25 +139,25 @@ public class CoursesController implements Initializable {
     public void saveDate() throws ClassNotFoundException {
         PreparedStatement pst;
         Connection conn;
-        String sel = "INSERT INTO managment.courses (course_code, course_name, subject, book, teacher, place) VALUES(?, ?, ?, ?, ?, ?);";
+        String sel = "INSERT INTO managment.users (user_id, full_name, living, department, mobile, password) VALUES(?, ?, ?, ?, ?,? );";
         try {
             conn = DatabaseConnect.connDB();
             pst = conn.prepareStatement(sel);
-            pst.setString(1, code0.getText());
+            pst.setString(1, number0.getText());
             pst.setString(2, name0.getText());
-            pst.setString(3, subject0.getText());
-            pst.setString(4, book0.getText());
-            pst.setString(5, teacher0.getText());
-            pst.setString(6, place0.getText());
+            pst.setString(3, living0.getText());
+            pst.setString(4, department0.getText());
+            pst.setString(5, mobile0.getText());
+            pst.setString(6, password0.getText());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Course Inserted");
+            JOptionPane.showMessageDialog(null, "User Inserted");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             System.err.println(ex);
         }
     }
 
-    public void update_course() {
+    public void update_user() {
         tableView.setVisible(false);
         paneContainer.setVisible(false);
         paneContainerUpdate.setVisible(true);
@@ -160,25 +166,26 @@ public class CoursesController implements Initializable {
 
     }
 
-    public void getDataForCourse() throws ClassNotFoundException {
+    public void getDataForUser() throws ClassNotFoundException {
         Connection conn = DatabaseConnect.connDB();
         System.out.println(conn);
         PreparedStatement pst;
         ResultSet rs;
-        String log = "select * from managment.courses where course_code = ? ";
+        String log = "select * from managment.users where user_id = ? ";
         try {
             pst = conn.prepareStatement(log);
-            pst.setString(1, code1.getText());
+            pst.setString(1, number1.getText());
             rs = pst.executeQuery();
             if (rs.next()) {
-                name1.setText(rs.getString("course_name"));
-                subject1.setText(rs.getString("subject"));
-                book1.setText(rs.getString("book"));
-                teacher1.setText(rs.getString("teacher"));
-                place1.setText(rs.getString("place"));
+                name1.setText(rs.getString("full_name"));
+                living1.setText(rs.getString("living"));
+                department1.setText(rs.getString("department"));
+                mobile1.setText(rs.getString("mobile"));   
+                password1.setText(rs.getString("password"));
                 update1.setDisable(false);
+                System.out.println(rs);
             } else {
-                JOptionPane.showMessageDialog(null, "No course found");
+                JOptionPane.showMessageDialog(null, "User not found");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
@@ -188,25 +195,25 @@ public class CoursesController implements Initializable {
     public void updateDate() throws ClassNotFoundException {
         PreparedStatement pst;
         Connection conn;
-        String sel = "UPDATE managment.courses SET course_name=? , subject= ?, book= ?, teacher=? , place=? WHERE course_code=? ;";
+        String sel = "UPDATE managment.users SET full_name=?, living=?, department=?, mobile=?, password=? WHERE user_id=?;";
         try {
             conn = DatabaseConnect.connDB();
             pst = conn.prepareStatement(sel);
             pst.setString(1, name1.getText());
-            pst.setString(2, subject1.getText());
-            pst.setString(3, book1.getText());
-            pst.setString(4, teacher1.getText());
-            pst.setString(5, place1.getText());
-            pst.setString(6, code1.getText());
+            pst.setString(2, living1.getText());
+            pst.setString(3, department1.getText());
+            pst.setString(4, mobile1.getText());
+            pst.setString(5, password1.getText());
+            pst.setString(6, number1.getText());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Course Updated");
+            JOptionPane.showMessageDialog(null, "User Updated");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
-            System.err.println(ex);
+            System.out.println(ex);
         }
     }
 
-    public void delete_course() {
+    public void delete_user() {
         tableView.setVisible(false);
         paneContainer.setVisible(false);
         paneContainerUpdate.setVisible(false);
@@ -218,7 +225,7 @@ public class CoursesController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText(null);
-        alert.setContentText("Do you want delete corse?");
+        alert.setContentText("Do you want to delete user?");
 
         ButtonType confirmButton = new ButtonType("Yes");
         ButtonType cancelButton = new ButtonType("No");
@@ -230,13 +237,13 @@ public class CoursesController implements Initializable {
         if (result.isPresent() && result.get() == confirmButton) {
             PreparedStatement pst;
             Connection conn;
-            String sel = "DELETE from managment.courses WHERE course_code=?;";
+            String sel = "DELETE from managment.users WHERE user_id=?;";
             try {
                 conn = DatabaseConnect.connDB();
                 pst = conn.prepareStatement(sel);
-                pst.setString(1, code2.getText());
+                pst.setString(1, number2.getText());
                 pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Course Deleted");
+                JOptionPane.showMessageDialog(null, "User Deleted");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
                 System.err.println(ex);

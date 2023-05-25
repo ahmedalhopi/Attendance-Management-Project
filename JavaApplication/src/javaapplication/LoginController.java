@@ -18,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -86,7 +85,7 @@ public class LoginController implements Initializable {
             System.out.println("Login Don Admin");
             Stage primaryStage = new Stage();
             Stage currentStage = (Stage) login_btn.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AssistantsHome.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserHome.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -96,7 +95,7 @@ public class LoginController implements Initializable {
             currentStage.close();
             primaryStage.show();
         } else {
-            JOptionPane.showMessageDialog(null, "Id Number or Password is not corrcet!");
+            JOptionPane.showMessageDialog(null, "User ID or Password is not corrcet!");
         }
     }
 ;
