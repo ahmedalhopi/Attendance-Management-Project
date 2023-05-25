@@ -80,6 +80,14 @@ ALTER TABLE managment.user_courses DROP CONSTRAINT user_courses_code_fkey;
 ALTER TABLE managment.user_courses ADD CONSTRAINT user_courses_fk2 FOREIGN KEY (code) REFERENCES managment.courses(course_code);
 ALTER TABLE managment.lectures DROP CONSTRAINT lectures_course_code_fkey;
 ALTER TABLE managment.lectures ADD CONSTRAINT lectures_fk FOREIGN KEY (course_code) REFERENCES managment.courses(course_code);
+ALTER TABLE managment.students_courses DROP CONSTRAINT students_courses_student_number_fkey;
+ALTER TABLE managment.students_courses DROP CONSTRAINT students_courses_course_code_fkey;
+ALTER TABLE managment.students_courses ADD CONSTRAINT students_courses_fk FOREIGN KEY (student_number) REFERENCES managment.students(student_number);
+ALTER TABLE managment.students_courses ADD CONSTRAINT students_courses_fk2 FOREIGN KEY (course_code) REFERENCES managment.courses(course_code);
+ALTER TABLE managment.attendance DROP CONSTRAINT attendance_lecture_id_fkey;
+ALTER TABLE managment.attendance DROP CONSTRAINT attendance_student_number_fkey;
+ALTER TABLE managment.attendance ADD CONSTRAINT attendance_fk FOREIGN KEY (lecture_id) REFERENCES managment.lectures(id);
+ALTER TABLE managment.attendance ADD CONSTRAINT attendance_fk2 FOREIGN KEY (student_number) REFERENCES managment.students(student_number);
 
 
 

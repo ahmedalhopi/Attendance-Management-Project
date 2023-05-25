@@ -173,7 +173,7 @@
             <TableColumn fx:id="date" prefWidth="133.0" text="Date" />
         </columns>
       </TableView>
-      <Pane fx:id="paneContainerDelete" layoutX="338.0" layoutY="192.0" prefHeight="226.0" prefWidth="579.0" style="-fx-background-color: #20052b;" visible="false">
+      <Pane fx:id="paneContainerDelete" layoutX="323.0" layoutY="190.0" prefHeight="226.0" prefWidth="579.0" style="-fx-background-color: #20052b;">
          <children>
             <Label layoutX="56.0" layoutY="34.0" prefHeight="39.0" prefWidth="142.0" text="Lecture Id" textFill="#188669">
                <font>
