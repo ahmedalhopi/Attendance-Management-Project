@@ -78,6 +78,8 @@ ALTER TABLE managment.user_courses DROP CONSTRAINT user_courses_user_id_fkey;
 ALTER TABLE managment.user_courses ADD CONSTRAINT user_courses_fk FOREIGN KEY (user_id) REFERENCES managment.users(user_id);
 ALTER TABLE managment.user_courses DROP CONSTRAINT user_courses_code_fkey;
 ALTER TABLE managment.user_courses ADD CONSTRAINT user_courses_fk2 FOREIGN KEY (code) REFERENCES managment.courses(course_code);
+ALTER TABLE managment.lectures DROP CONSTRAINT lectures_course_code_fkey;
+ALTER TABLE managment.lectures ADD CONSTRAINT lectures_fk FOREIGN KEY (course_code) REFERENCES managment.courses(course_code);
 
 
 

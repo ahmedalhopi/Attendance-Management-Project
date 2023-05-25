@@ -29,7 +29,7 @@ public class UserHomeController implements Initializable {
 
     public void goToLectures() throws IOException {
         Stage primaryStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PresenceAndAbsence.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Lectures.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
@@ -40,7 +40,7 @@ public class UserHomeController implements Initializable {
 
     public void goToPresenceAndAbsence() throws IOException {
         Stage primaryStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Lectures.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PresenceAndAbsence.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
