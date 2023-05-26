@@ -28,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcleReportsController implements Initializable {
@@ -694,65 +695,61 @@ public class ExcleReportsController implements Initializable {
     }
 
     public void importDataFromExcle() throws FileNotFoundException, IOException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xls"));
-        File selectedFile = fileChooser.showOpenDialog(null);
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xls"));
+    File selectedFile = fileChooser.showOpenDialog(null);
 
-        if (selectedFile != null) {
-            FileInputStream fileInputStream = new FileInputStream(selectedFile);
-            HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream); // Use HSSFWorkbook
+    if (selectedFile != null) {
+        try (FileInputStream fileInputStream = new FileInputStream(selectedFile);
+             HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
+             Connection conn = DatabaseConnect.connDB();
+             PreparedStatement pst = conn.prepareStatement("INSERT INTO managment.attendance (lecture_id, student_number, student_name, student_mobile, status) VALUES (?, ?, ?, ?, ?)")) {
 
-            try {
+            Sheet sheet = workbook.getSheetAt(0);
+            int rowCount = sheet.getLastRowNum();
 
-                Sheet sheet = workbook.getSheetAt(0);
-                int rowCount = sheet.getLastRowNum();
+            for (int i = 0; i <= rowCount; i++) {
+                Row row = sheet.getRow(i);
 
-                PreparedStatement pst;
-                Connection conn;
-                conn = DatabaseConnect.connDB();
+                int lectureId = 0;
+                String studentNumber = row.getCell(1).getStringCellValue();
+                String studentName = row.getCell(2).getStringCellValue();
+                String studentMobile = row.getCell(3).getStringCellValue();
+                String status = row.getCell(4).getStringCellValue();
 
-                String insertQuery = "insert\n"
-                        + "	into\n"
-                        + "	managment.attendance (lecture_id,\n"
-                        + "	student_number,\n"
-                        + "	student_name,\n"
-                        + "	student_mobile,\n"
-                        + "	status)\n"
-                        + "values (?,\n"
-                        + "?,\n"
-                        + "?,\n"
-                        + "?,\n"
-                        + "?);";
-                pst = conn.prepareStatement(insertQuery);
-
-                // Iterate over the rows in the Excel sheet
-                for (int i = 1; i <= rowCount; i++) { // Start from index 1 to skip the header row
-                    Row row = sheet.getRow(i);
-
-                    // Extract the cell values from the row
-                    int lectureId = (int) row.getCell(0).getNumericCellValue();
-                    String studentNumber = row.getCell(1).getStringCellValue();
-                    String studentName = row.getCell(2).getStringCellValue();
-                    String studentMobile = row.getCell(3).getStringCellValue();
-                    String status = row.getCell(4).getStringCellValue();
-
-                    pst.setInt(1, lectureId);
-                    pst.setString(2, studentNumber);
-                    pst.setString(3, studentName);
-                    pst.setString(4, studentMobile);
-                    pst.setString(5, status);
-
-                    pst.executeQuery();
+                if (row.getCell(0).getCellType() == CellType.NUMERIC) {
+                    lectureId = (int) row.getCell(0).getNumericCellValue();
+                } else if (row.getCell(0).getCellType() == CellType.STRING) {
+                    try {
+                        lectureId = Integer.parseInt(row.getCell(0).getStringCellValue());
+                    } catch (NumberFormatException n) {
+                        System.out.println(n);
+                        JOptionPane.showMessageDialog(null, n);
+                    }
                 }
 
-                System.out.println("Data imported successfully!");
-                JOptionPane.showMessageDialog(null, "Data imported successfully!");
-
-            } catch (ClassNotFoundException | SQLException e) {
-                System.out.println(e);
-                JOptionPane.showMessageDialog(null, e);
+                pst.setInt(1, lectureId);
+                pst.setString(2, studentNumber);
+                pst.setString(3, studentName);
+                pst.setString(4, studentMobile);
+                pst.setString(5, status);
+                pst.executeUpdate();
             }
+
+            System.out.println("Data imported successfully!");
+            JOptionPane.showMessageDialog(null, "Data imported successfully!");
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
+        } catch (IOException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
         }
+    }
     }
 
 }
