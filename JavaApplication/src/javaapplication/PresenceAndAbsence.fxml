@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="1265.0" style="-fx-background-color: 000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication.PresenceAndAbsenceController">
-    <Label layoutX="330.0" layoutY="27.0" prefHeight="66.0" prefWidth="655.0" text="Presence And Absence">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="1265.0" style="-fx-background-color: #20052b;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication.PresenceAndAbsenceController">
+    <Label layoutX="330.0" layoutY="27.0" prefHeight="66.0" prefWidth="655.0" text="Presence And Absence" textFill="#188669">
         <font>
             <Font name="Broadway" size="52.0" />
         </font>
     </Label>
-    <Label layoutX="286.0" layoutY="127.0" prefHeight="53.0" prefWidth="120.0" text="Lecture ID">
+    <Label layoutX="286.0" layoutY="127.0" prefHeight="53.0" prefWidth="120.0" text="Lecture ID" textFill="#188669">
         <font>
             <Font size="25.0" />
         </font>
@@ -25,14 +25,14 @@
             <Font size="21.0" />
         </font>
     </TextField>
-    <Button fx:id="btnGet" layoutX="752.0" layoutY="127.0" mnemonicParsing="false" onAction="#getAllStudents" prefHeight="53.0" prefWidth="210.0" text="Get Students">
+    <Button fx:id="btnGet" layoutX="752.0" layoutY="127.0" mnemonicParsing="false" onAction="#getAllStudents" prefHeight="53.0" prefWidth="210.0" style="-fx-background-color: #71029e;" text="Get Students" textFill="WHITE">
         <font>
             <Font size="23.0" />
         </font>
     </Button>
     <Pane layoutX="61.0" layoutY="180.0" prefHeight="234.0" prefWidth="1143.0">
         <children>
-            <RadioButton fx:id="present_status" layoutX="895.0" layoutY="75.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" selected="true" text="Present" toggleGroup="$radioSelect">
+            <RadioButton fx:id="present_status" layoutX="895.0" layoutY="75.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" selected="true" text="Present" textFill="#188669" toggleGroup="$radioSelect">
                 <font>
                     <Font size="18.0" />
                 </font>
@@ -40,7 +40,7 @@
                     <ToggleGroup fx:id="radioSelect" />
                 </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="absent_status" layoutX="999.0" layoutY="75.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Absent" toggleGroup="$radioSelect">
+            <RadioButton fx:id="absent_status" layoutX="999.0" layoutY="75.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Absent" textFill="#188669" toggleGroup="$radioSelect">
                 <font>
                     <Font size="18.0" />
                 </font>
@@ -60,12 +60,12 @@
                     <Font size="21.0" />
                 </font>
             </TextField>
-            <Button layoutX="648.0" layoutY="150.0" mnemonicParsing="false" onAction="#nextStudent" prefHeight="45.0" prefWidth="155.0" text="Next Student">
+            <Button layoutX="648.0" layoutY="150.0" mnemonicParsing="false" onAction="#nextStudent" prefHeight="45.0" prefWidth="155.0" style="-fx-background-color: #71029e;" text="Next Student" textFill="WHITE">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Button>
-         <Button layoutX="328.0" layoutY="150.0" mnemonicParsing="false" onAction="#previousStudent" prefHeight="45.0" prefWidth="171.0" text="Previous Student">
+         <Button layoutX="328.0" layoutY="150.0" mnemonicParsing="false" onAction="#previousStudent" prefHeight="45.0" prefWidth="171.0" style="-fx-background-color: #71029e;" text="Previous Student" textFill="WHITE">
             <font>
                <Font size="18.0" />
             </font>
