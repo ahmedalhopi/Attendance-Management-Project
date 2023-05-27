@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="1265.0" style="-fx-background-color: #20052b;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication.PresenceAndAbsenceController">
+<AnchorPane id="AnchorPane" prefHeight="478.0" prefWidth="1265.0" style="-fx-background-color: #20052b;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication.PresenceAndAbsenceController">
     <Label layoutX="330.0" layoutY="27.0" prefHeight="66.0" prefWidth="655.0" text="Presence And Absence" textFill="#188669">
         <font>
             <Font name="Broadway" size="52.0" />
@@ -72,4 +72,9 @@
          </Button>
         </children>
     </Pane>
+   <Button layoutX="994.0" layoutY="411.0" mnemonicParsing="false" onAction="#goToUpdate" prefHeight="53.0" prefWidth="257.0" style="-fx-background-color: #71029e;" text="Update Presence And Absence" textFill="WHITE">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Button>
 </AnchorPane>

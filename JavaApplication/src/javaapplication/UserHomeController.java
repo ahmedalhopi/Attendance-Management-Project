@@ -48,6 +48,17 @@ public class UserHomeController implements Initializable {
         primaryStage.iconifiedProperty();
         primaryStage.show();
     }
+    
+    public void goToStudentsAndCourses() throws IOException {
+        Stage primaryStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StudentsAndCourses.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
+        primaryStage.iconifiedProperty();
+        primaryStage.show();
+    }
 
     public void goToExcleReports() throws IOException {
         Stage primaryStage = new Stage();

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="759.0" prefWidth="1160.0" style="-fx-background-color: #20052b;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="javaapplication.StudentsAndCoursesController">
+    <Label layoutX="264.0" layoutY="20.0" prefHeight="66.0" prefWidth="632.0" text="Students And Courses" textFill="#188669">
+        <font>
+            <Font name="Broadway" size="52.0" />
+        </font>
+    </Label>
+   <Button layoutX="32.0" layoutY="105.0" mnemonicParsing="false" onAction="#allStudentsWithCourses" prefHeight="66.0" prefWidth="271.0" style="-fx-background-color: #71029e;" text="All Students And Courses" textFill="WHITE">
+      <font>
+         <Font size="21.0" />
+      </font>
+   </Button>
+   <Button layoutX="316.0" layoutY="105.0" mnemonicParsing="false" onAction="#addCourseToStudent" prefHeight="66.0" prefWidth="271.0" style="-fx-background-color: #71029e;" text="Add Course To Student" textFill="WHITE">
+      <font>
+         <Font size="21.0" />
+      </font>
+   </Button>
+   <Button layoutX="598.0" layoutY="105.0" mnemonicParsing="false" onAction="#editCourseToStudent" prefHeight="66.0" prefWidth="271.0" style="-fx-background-color: #71029e;" text="Edit Course To Student" textFill="WHITE">
+      <font>
+         <Font size="21.0" />
+      </font>
+   </Button>
+   <TableView fx:id="tableView" layoutX="35.0" layoutY="190.0" prefHeight="540.0" prefWidth="1109.0" style="-fx-background-color: #20052b;" visible="false">
+     <columns>
+       <TableColumn fx:id="student_number" prefWidth="134.0" text="Student Number" />
+       <TableColumn fx:id="student_name" prefWidth="333.0" text="Student Name" />
+         <TableColumn fx:id="course_code" prefWidth="152.0" text="Course Code" />
+         <TableColumn fx:id="course_name" prefWidth="342.0" text="Course Name" />
+         <TableColumn fx:id="status" prefWidth="142.0" text="Status" />
+     </columns>
+   </TableView>
+   <Pane fx:id="insertPane" layoutX="305.0" layoutY="204.0" prefHeight="351.0" prefWidth="550.0" visible="false">
+      <children>
+         <Label layoutX="32.0" layoutY="53.0" prefHeight="41.0" prefWidth="180.0" text="Course Code" textFill="#188669">
+            <font>
+               <Font size="26.0" />
+            </font>
+         </Label>
+         <TextField fx:id="course_code0" layoutX="257.0" layoutY="51.0" prefHeight="41.0" prefWidth="261.0">
+            <font>
+               <Font size="21.0" />
+            </font>
+         </TextField>
+         <Label layoutX="32.0" layoutY="137.0" prefHeight="41.0" prefWidth="200.0" text="Student Number" textFill="#188669">
+            <font>
+               <Font size="26.0" />
+            </font>
+         </Label>
+         <TextField fx:id="student_number0" layoutX="257.0" layoutY="135.0" prefHeight="41.0" prefWidth="261.0">
+            <font>
+               <Font size="21.0" />
+            </font>
+         </TextField>
+         <Button layoutX="145.0" layoutY="231.0" mnemonicParsing="false" onAction="#inserStudentWithCourse" prefHeight="58.0" prefWidth="261.0" style="-fx-background-color: #71029e;" text="Insert" textFill="WHITE">
+            <font>
+               <Font size="27.0" />
+            </font>
+         </Button>
+      </children>
+   </Pane>
+   <Pane fx:id="updatePane" layoutX="315.0" layoutY="214.0" prefHeight="406.0" prefWidth="550.0" visible="false">
+      <children>
+         <Label layoutX="32.0" layoutY="53.0" prefHeight="41.0" prefWidth="180.0" text="Course Code" textFill="#188669">
+            <font>
+               <Font size="26.0" />
+            </font>
+         </Label>
+         <TextField fx:id="course_code1" layoutX="257.0" layoutY="51.0" prefHeight="41.0" prefWidth="261.0">
+            <font>
+               <Font size="21.0" />
+            </font>
+         </TextField>
+         <Label layoutX="32.0" layoutY="137.0" prefHeight="41.0" prefWidth="200.0" text="Student Number" textFill="#188669">
+            <font>
+               <Font size="26.0" />
+            </font>
+         </Label>
+         <TextField fx:id="student_number1" layoutX="257.0" layoutY="135.0" prefHeight="41.0" prefWidth="261.0">
+            <font>
+               <Font size="21.0" />
+            </font>
+         </TextField>
+         <Button layoutX="145.0" layoutY="315.0" mnemonicParsing="false" onAction="#UpdateStudentWithCourse" prefHeight="58.0" prefWidth="261.0" style="-fx-background-color: #71029e;" text="Update" textFill="WHITE">
+            <font>
+               <Font size="27.0" />
+            </font>
+         </Button>
+         <RadioButton fx:id="registered1" layoutX="14.0" layoutY="213.0" mnemonicParsing="false" selected="true" text="Registered" textFill="#188669">
+            <font>
+               <Font size="23.0" />
+            </font>
+            <toggleGroup>
+               <ToggleGroup fx:id="statusGroub" />
+            </toggleGroup>
+         </RadioButton>
+         <RadioButton fx:id="withdrawn1" layoutX="182.0" layoutY="213.0" mnemonicParsing="false" text="Withdrawn" textFill="#188669" toggleGroup="$statusGroub">
+            <font>
+               <Font size="23.0" />
+            </font>
+         </RadioButton>
+         <RadioButton fx:id="disconnected1" layoutX="345.0" layoutY="213.0" mnemonicParsing="false" text="Disconnected" textFill="#188669" toggleGroup="$statusGroub">
+            <font>
+               <Font size="23.0" />
+            </font>
+         </RadioButton>
+      </children>
+   </Pane>
+   <Pane fx:id="deletePane" layoutX="312.0" layoutY="204.0" prefHeight="351.0" prefWidth="550.0">
+      <children>
+         <Label layoutX="32.0" layoutY="53.0" prefHeight="41.0" prefWidth="180.0" text="Course Code" textFill="#188669">
+            <font>
+               <Font size="26.0" />
+            </font>
+         </Label>
+         <TextField fx:id="course_code2" layoutX="257.0" layoutY="51.0" prefHeight="41.0" prefWidth="261.0">
+            <font>
+               <Font size="21.0" />
+            </font>
+         </TextField>
+         <Label layoutX="32.0" layoutY="137.0" prefHeight="41.0" prefWidth="200.0" text="Student Number" textFill="#188669">
+            <font>
+               <Font size="26.0" />
+            </font>
+         </Label>
+         <TextField fx:id="student_number2" layoutX="257.0" layoutY="135.0" prefHeight="41.0" prefWidth="261.0">
+            <font>
+               <Font size="21.0" />
+            </font>
+         </TextField>
+         <Button layoutX="145.0" layoutY="224.0" mnemonicParsing="false" onAction="#deleteStudentWithCourse" prefHeight="58.0" prefWidth="261.0" style="-fx-background-color: #e20505;" text="Delete" textFill="WHITE">
+            <font>
+               <Font size="27.0" />
+            </font>
+         </Button>
+      </children>
+   </Pane>
+   <Button layoutX="875.0" layoutY="105.0" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="66.0" prefWidth="271.0" style="-fx-background-color: #71029e;" text="Delete Course To Student" textFill="WHITE">
+      <font>
+         <Font size="21.0" />
+      </font>
+   </Button>
+</AnchorPane>
