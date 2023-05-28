@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />	
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" />
+<link rel="stylesheet" href="login.css" media="screen">
+ 
+
+</head>
+<body class='login'>
+
+	<form name="sendin" action="http://guest.ptcdb.edu.ps/login" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="http://javafx.com/javafx/8.0.171" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+	
+	<script type="text/javascript" src="md5.js"></script>
+	<script type="text/javascript">
+	
+	    function doLogin() {
+		document.sendin.username.value = document.login.username.value;
+		document.sendin.password.value = hexMD5('\351' + document.login.password.value + '\135\305\005\067\247\317\151\271\030\207\057\206\317\106\075\127');
+		document.sendin.submit();
+		return false;
+	    }
+	//-->
+	</script>
+
+
+
+
+<form class="vertical-form" name="login" action="http://guest.ptcdb.edu.ps/login" method="post" background="#A03472"
+	 onSubmit="return doLogin()" >
+<input type="hidden" name="dst" value="http://javafx.com/javafx/8.0.171" />
+<input type="hidden" name="popup" value="true" />
+<div style="margin:0;padding:50;display:inline"></div>
+
+
+
+<center>
+    <div id="head">
+    </div>
+    
+    
+<div id="box">
+    <div id="userdiv"> </div>
+    <legend>
+    <p>اهلا بكم زائرينا بكلية فلسطين التقنية </p>
+    </legend>
+<div><input id="user" autocomplete="on" name="username" type="text"  placeholder="اسم المستخدم"/></div>
+<div id="passDiv"><input id="pass" autocomplete="off" name="password" type="password" label="false" placeholder="كلمة المرور"/></div>
+<div><input id="boton" name="submit" type="submit" value=" " /></div>
+
+
+</center>
+
+ <div class='pre-footer'>
+                        <p> </p><span></span>
+                    </div>
+
+
+<div class='footer'>
+<br>
+<p>
+</p>
+</div>
+</form>
+
+<script type="text/javascript">
+<!--
+  document.login.username.focus();
+//-->
+</script>
+<script type="text/javascript">
+document.oncontextmenu = function(){return false;}
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="604.0" prefWidth="427.0" style="-fx-background-color: #20052b;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication.UserHomeController">
-    <Label layoutX="71.0" layoutY="14.0" prefHeight="75.0" prefWidth="286.0" text="Assistants Home" textFill="#188669">
+    <Label layoutX="113.0" layoutY="22.0" prefHeight="75.0" prefWidth="201.0" text="User Home" textFill="#188669">
          <font>
             <Font name="Dubai Medium" size="40.0" />
          </font>
