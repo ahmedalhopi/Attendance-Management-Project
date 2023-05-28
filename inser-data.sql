@@ -1,26 +1,27 @@
 
 
-INSERT INTO courses (course_code, name, subject, book, number_lectures, teacher, place)
+INSERT INTO courses (course_code, name, subject, book, teacher, place)
 VALUES 
-    ('C001', 'Introduction to Programming', 'Computer Science', 'Programming Textbook', 30, 'Prof. Johnson', 'Room 101'),
-    ('C002', 'Data Structures and Algorithms', 'Computer Science', 'DS&A Textbook', 45, 'Prof. Smith', 'Room 202'),
-    ('C003', 'Database Management Systems', 'Computer Science', 'DBMS Textbook', 40, 'Prof. Davis', 'Room 303'),
-    ('C004', 'Software Engineering', 'Computer Science', 'Software Engineering Textbook', 35, 'Prof. Thompson', 'Room 404'),
-    ('C005', 'Operating Systems', 'Computer Science', 'OS Textbook', 30, 'Prof. Anderson', 'Room 505'),
-    ('C006', 'Computer Networks', 'Computer Science', 'Networking Textbook', 45, 'Prof. Wilson', 'Room 606'),
-    ('C007', 'Digital Logic Design', 'Computer Engineering', 'Digital Logic Textbook', 30, 'Prof. Hernandez', 'Room 707'),
-    ('C008', 'Microprocessors and Assembly Language', 'Computer Engineering', 'Microprocessors Textbook', 45, 'Prof. Taylor', 'Room 808'),
-    ('C009', 'Computer Architecture', 'Computer Engineering', 'Computer Architecture Textbook', 30, 'Prof. Martinez', 'Room 909'),
-    ('C010', 'Embedded Systems', 'Computer Engineering', 'Embedded Systems Textbook', 40, 'Prof. Brown', 'Room 1010'),
-    ('C011', 'Introduction to Engineering', 'Engineering', 'Engineering Textbook', 30, 'Prof. Johnson', 'Room 101'),
-    ('C012', 'Mechanical Engineering Principles', 'Mechanical Engineering', 'Mechanical Engineering Textbook', 45, 'Prof. Smith', 'Room 202'),
-    ('C013', 'Civil Engineering Fundamentals', 'Civil Engineering', 'Civil Engineering Textbook', 40, 'Prof. Davis', 'Room 303'),
-    ('C014', 'Electrical Engineering Basics', 'Electrical Engineering', 'Electrical Engineering Textbook', 35, 'Prof. Thompson', 'Room 404');
+    ('C001', 'Introduction to Programming', 'Computer Science', 'Programming Textbook', 'Prof. Johnson', 'Room 101'),
+    ('C002', 'Data Structures and Algorithms', 'Computer Science', 'DS&A Textbook', 'Prof. Smith', 'Room 202'),
+    ('C003', 'Database Management Systems', 'Computer Science', 'DBMS Textbook', 'Prof. Davis', 'Room 303'),
+    ('C004', 'Software Engineering', 'Computer Science', 'Software Engineering Textbook', 'Prof. Thompson', 'Room 404'),
+    ('C005', 'Operating Systems', 'Computer Science', 'OS Textbook', 'Prof. Anderson', 'Room 505'),
+    ('C006', 'Computer Networks', 'Computer Science', 'Networking Textbook', 'Prof. Wilson', 'Room 606'),
+    ('C007', 'Digital Logic Design', 'Computer Engineering', 'Digital Logic Textbook', 'Prof. Hernandez', 'Room 707'),
+    ('C008', 'Microprocessors and Assembly Language', 'Computer Engineering', 'Microprocessors Textbook', 'Prof. Taylor', 'Room 808'),
+    ('C009', 'Computer Architecture', 'Computer Engineering', 'Computer Architecture Textbook', 'Prof. Martinez', 'Room 909'),
+    ('C010', 'Embedded Systems', 'Computer Engineering', 'Embedded Systems Textbook', 'Prof. Brown', 'Room 1010'),
+    ('C011', 'Introduction to Engineering', 'Engineering', 'Engineering Textbook', 'Prof. Johnson', 'Room 101'),
+    ('C012', 'Mechanical Engineering Principles', 'Mechanical Engineering', 'Mechanical Engineering Textbook', 'Prof. Smith', 'Room 202'),
+    ('C013', 'Civil Engineering Fundamentals', 'Civil Engineering', 'Civil Engineering Textbook', 'Prof. Davis', 'Room 303'),
+    ('C014', 'Electrical Engineering Basics', 'Electrical Engineering', 'Electrical Engineering Textbook', 'Prof. Thompson', 'Room 404');
 
 
 
 
-INSERT INTO students (student_number, full_name, mobile, gender, living, department, majoring)
+
+INSERT INTO students (student_number, full_name, mobile, gender, living, department, major)
 VALUES
   ('S001', 'John Doe', '0591234567', 'Male', 'Dormitory', 'Computer', 'Computer Science'),
   ('S002', 'Jane Smith', '0592345678', 'Female', 'Off-Campus', 'Computer', 'Computer Science'),
@@ -88,39 +89,41 @@ VALUES
 
 
 
-INSERT INTO assistants (assistant_number, full_name, gender, living, department, mobile, password)
+INSERT INTO users (user_id, full_name, living, department, mobile, password,is_admin)
 VALUES 
-    ('1901', 'Osama R. Al Zayan', 'Male', 'Dormitory', 'Engineering', '0595422324', 'password5'),
-    ('1902', 'Rasha E. Kahil', 'Female', 'Off-Campus', 'Computer', '0591236547', 'password6'),
-    ('1903', 'Ahmed I. Salah', 'Male', 'Dormitory', 'Engineering', '0595678223', 'password7'),
-    ('1904', 'Ali M. Harb', 'Male', 'Off-Campus', 'Engineering', '0592992123', 'password8');
+    ('1901', 'Osama R. Al Zayan',  'Dormitory', 'Engineering', '0595422324', 'password5','0'),
+    ('1902', 'Rasha E. Kahil',  'Off-Campus', 'Computer', '0591236547', 'password6','0'),
+    ('1903', 'Ahmed I. Salah',  'Dormitory', 'Engineering', '0595678223', 'password7','0'),
+    ('1904', 'Ali M. Harb',  'Off-Campus', 'Engineering', '0592992123', 'password8','0'),
+    ('1905', 'Mohammad I. Salah',  'Dormitory', 'Engineering', '0595782323', 'password9','1');
 
 
 
 
-INSERT INTO lectures (course_code, title, place, day, date, hour_from, hour_to)
+INSERT INTO lectures (course_code, title, place, day, date)
 VALUES 
-    ('C001', 'Introduction Lecture', 'Room 101', 'Monday', '2023-05-25 09:00:00', '09:00:00', '10:30:00'),
-    ('C002', 'Data Structures Lecture', 'Room 202', 'Tuesday', '2023-05-26 10:00:00', '10:00:00', '11:30:00'),
-    ('C003', 'Database Management Lecture', 'Room 303', 'Wednesday', '2023-05-27 11:00:00', '11:00:00', '12:30:00'),
-    ('C004', 'Software Engineering Lecture', 'Room 404', 'Thursday', '2023-05-28 12:00:00', '12:00:00', '13:30:00'),
-    ('C005', 'Operating Systems Lecture', 'Room 505', 'Friday', '2023-05-29 13:00:00', '13:00:00', '14:30:00'),
-    ('C006', 'Computer Networks Lecture', 'Room 606', 'Saturday', '2023-05-30 14:00:00', '14:00:00', '15:30:00'),
-    ('C007', 'Digital Logic Design Lecture', 'Room 707', 'Sunday', '2023-05-31 15:00:00', '15:00:00', '16:30:00'),
-    ('C008', 'Microprocessors Lecture', 'Room 808', 'Monday', '2023-06-01 16:00:00', '16:00:00', '17:30:00'),
-    ('C009', 'Computer Architecture Lecture', 'Room 909', 'Tuesday', '2023-06-02 17:00:00', '17:00:00', '18:30:00'),
-    ('C010', 'Embedded Systems Lecture', 'Room 1010', 'Wednesday', '2023-06-03 09:00:00', '09:00:00', '10:30:00'),
-    ('C011', 'Introduction to Engineering Lecture', 'Room 101', 'Thursday', '2023-06-04 10:00:00', '10:00:00', '11:30:00'),
-    ('C012', 'Mechanical Engineering Principles Lecture', 'Room 202', 'Friday', '2023-06-05 11:00:00', '11:00:00', '12:30:00'),
-    ('C013', 'Civil Engineering Fundamentals Lecture', 'Room 303', 'Saturday', '2023-06-06 12:00:00', '12:00:00', '13:30:00'),
-    ('C014', 'Electrical Engineering Basics Lecture', 'Room 404', 'Sunday', '2023-06-07 13:00:00', '13:00:00', '14:30:00'),
-    ('C001', 'Introduction Lecture', 'Room 101', 'Monday', '2023-06-08 14:00:00', '14:00:00', '15:30:00'),
-    ('C002', 'Data Structures Lecture', 'Room 202', 'Tuesday', '2023-06-09 15:00:00', '15:00:00', '16:30:00'),
-    ('C003', 'Database Management Lecture', 'Room 303', 'Wednesday', '2023-06-10 16:00:00', '16:00:00', '17:30:00'),
-    ('C004', 'Software Engineering Lecture', 'Room 404', 'Thursday', '2023-06-11 17:00:00', '17:00:00', '18:30:00'),
-    ('C005', 'Operating Systems Lecture', 'Room 505', 'Friday', '2023-06-12 09:00:00', '09:00:00', '10:30:00'),
-    ('C006', 'Computer Networks Lecture', 'Room 606', 'Saturday', '2023-06-13 10:00:00', '10:00:00', '11:30:00'),
-    ('C007', 'Digital Logic Design Lecture', 'Room 707', 'Sunday', '2023-06-14 11:00:00', '11:00:00', '12:30:00');
+    ('C001', 'Introduction Lecture', 'Room 101', 'Monday', '2023-05-25 09:00:00'),
+    ('C002', 'Data Structures Lecture', 'Room 202', 'Tuesday', '2023-05-26 10:00:00'),
+    ('C003', 'Database Management Lecture', 'Room 303', 'Wednesday', '2023-05-27 11:00:00'),
+    ('C004', 'Software Engineering Lecture', 'Room 404', 'Thursday', '2023-05-28 12:00:00'),
+    ('C005', 'Operating Systems Lecture', 'Room 505', 'Friday', '2023-05-29 13:00:00'),
+    ('C006', 'Computer Networks Lecture', 'Room 606', 'Saturday', '2023-05-30 14:00:00'),
+    ('C007', 'Digital Logic Design Lecture', 'Room 707', 'Sunday', '2023-05-31 15:00:00'),
+    ('C008', 'Microprocessors Lecture', 'Room 808', 'Monday', '2023-06-01 16:00:00'),
+    ('C009', 'Computer Architecture Lecture', 'Room 909', 'Tuesday', '2023-06-02 17:00:00'),
+    ('C010', 'Embedded Systems Lecture', 'Room 1010', 'Wednesday', '2023-06-03 09:00:00'),
+    ('C011', 'Introduction to Engineering Lecture', 'Room 101', 'Thursday', '2023-06-04 10:00:00'),
+    ('C012', 'Mechanical Engineering Principles Lecture', 'Room 202', 'Friday', '2023-06-05 11:00:00'),
+    ('C013', 'Civil Engineering Fundamentals Lecture', 'Room 303', 'Saturday', '2023-06-06 12:00:00'),
+    ('C014', 'Electrical Engineering Basics Lecture', 'Room 404', 'Sunday', '2023-06-07 13:00:00'),
+    ('C001', 'Introduction Lecture', 'Room 101', 'Monday', '2023-06-08 14:00:00'),
+    ('C002', 'Data Structures Lecture', 'Room 202', 'Tuesday', '2023-06-09 15:00:00'),
+    ('C003', 'Database Management Lecture', 'Room 303', 'Wednesday', '2023-06-10 16:00:00'),
+    ('C004', 'Software Engineering Lecture', 'Room 404', 'Thursday', '2023-06-11 17:00:00'),
+    ('C005', 'Operating Systems Lecture', 'Room 505', 'Friday', '2023-06-12 09:00:00'),
+    ('C006', 'Computer Networks Lecture', 'Room 606', 'Saturday', '2023-06-13 10:00:00'),
+    ('C007', 'Digital Logic Design Lecture', 'Room 707', 'Sunday', '2023-06-14 11:00:00');
+
 
 
 INSERT INTO students_courses (student_number, course_code, status)
@@ -309,7 +312,7 @@ VALUES
 
 
 
-INSERT INTO assistants_courses (code, assistant_number) values
+INSERT INTO user_courses (code, user_id) values
 ('C001', '1901'),
 ('C002', '1901'),
 ('C003', '1901'),
