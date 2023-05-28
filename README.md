@@ -18,7 +18,18 @@ To run the program you need:
 5. In the project's folder you can take all commands in insert-data.sql to insert data to test the program.
 
 ### Open Project
+#### Create Connection
 1. After download netbeans 8.2 ide you can open the project using it.
 2. Create new connection with database from Services->Databases->right click->New Connection.
 3. From "Driver" choose the last option New Driver->Add->choose the file postgresql-42.6.0.jar from project folder->Libraries Driver->Database Driver.
-4. 
+4. Click Ok->Next.
+5. Make sure the host is 127.0.0.1 or localhost and port 5432 if you did not change it during installation.
+6. set Database that you created it in this case we set "attendance_management".
+7. Enter username and password that you put them during installation then Next.
+8. Create the schema that must be "managment".
+9. You can change the name of connection as you like.
+#### Edit DatabaseConnect.java
+1. Open the DatabaseConnect.java .
+2. Modify the url you can get it from the connection that created .
+3. Right click on connection then "Properties" you will find "Database URL" then copy and past it.
+4. Modify username and password that you put them during installation.
