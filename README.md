@@ -33,3 +33,7 @@ To run the program you need:
 2. Modify the url you can get it from the connection that created .
 3. Right click on connection then "Properties" you will find "Database URL" then copy and past it.
 4. Modify username and password that you put them during installation.
+
+
+
+After following the steps properly, the program will work correctly and properly without any problems.
